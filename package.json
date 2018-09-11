@@ -1,0 +1,12 @@
+{
+  "name": "krldf",
+  "version": "1.0.0",
+  "description": "Converts a webpage to a PDF file using Google's puppeteer 🐩",
+  "main": "index.js",
+  "author": "Pierre Cholhot <hello@pierre.cx>",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "1.2.0",
+    "puppeteer": "1.8.0"
+  }
+}
