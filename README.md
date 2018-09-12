@@ -1,15 +1,17 @@
 # krldf
 
-Converts a webpage to a PDF file using Google's puppeteer 🐩
+Converts a webpage to a PDF file using <img src="https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png" height="20" align="top" /> [Chrome's Puppeteer](https://github.com/GoogleChrome/puppeteer)
+
 
 ## Usage
 
     krldf --url=<url>
 
-### Options
 
-name | default | description
------|---------|------------
+## Configuration
+
+option | default | description
+-------|---------|------------
 **url** | about:blank | url of the page to be converted
 **width** | 1440 | sets the width of the viewport
 **height** | 1000 | sets the height of the viewport
