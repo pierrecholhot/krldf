@@ -4,7 +4,7 @@
   "description": "Saves a webpage as PDF using Chrome's Puppeteer",
   "main": "index.js",
   "author": "Pierre Cholhot <hello@pierre.cx>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "delay": "4.0.1",
     "minimist": "1.2.0",
