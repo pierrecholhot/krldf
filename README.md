@@ -14,4 +14,4 @@ name | default | description
 **width** | 1440 | sets the width of the viewport
 **height** | 1000 | sets the height of the viewport
 **delay** | 3000 | number of ms to wait until capture
-**result** | result.pdf | path and filename of resulting PDF
+**path** | result.pdf | path and filename of resulting PDF

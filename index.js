@@ -1,26 +1,12 @@
-const puppeteer = require('puppeteer')
-const argv = require('minimist')(process.argv.slice(2))
+const options = require('minimist')(process.argv.slice(2))
+const capture = require('./lib/capture')
 
-const timeout = ms => new Promise(resolve => setTimeout(resolve, ms))
+const defaults = {
+  url: 'about:blank',
+  delay: 3000,
+  width: 1440,
+  height: 1000,
+  path: 'result.pdf',
+}
 
-console.log(`\n[krldf] Initialized`);
-
-(async() => {
-  const url = argv.url || 'about:blank'
-  const width = argv.width || 1440
-  const height = argv.height || 1000
-  const delay = argv.delay || 3000
-  const result = argv.result || 'result.pdf'
-
-  console.log(`\n[krldf] Working on ${url}`);
-
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-  await page.setViewport({ width, height })
-  await page.goto(url, { waitUntil: 'networkidle2' })
-  await timeout(delay)
-  await page.pdf({ path: result })
-  browser.close()
-
-  console.log(`\n[krldf] Generated ${result}`);
-})()
+capture({ ...defaults, ...options }, code => process.exit(code))
