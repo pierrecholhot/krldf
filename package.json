@@ -1,14 +1,14 @@
 {
   "name": "krldf",
   "version": "1.0.0",
-  "description": "Converts a webpage to a PDF file using Google's puppeteer 🐩",
+  "description": "Saves a webpage as PDF using Chrome's Puppeteer",
   "main": "index.js",
   "author": "Pierre Cholhot <hello@pierre.cx>",
   "license": "ISC",
   "dependencies": {
-    "delay": "^4.0.1",
+    "delay": "4.0.1",
     "minimist": "1.2.0",
-    "pretty-log": "^0.1.0",
+    "pretty-log": "0.1.0",
     "puppeteer": "1.8.0"
   }
 }
