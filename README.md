@@ -9,7 +9,7 @@ Saves a webpage as PDF using Chrome's <a href="https://github.com/GoogleChrome/p
 
 ## Usage
 
-    krldf --url=<url>
+    krldf --url="<url>"
 
 
 ## Configuration
