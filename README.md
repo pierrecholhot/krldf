@@ -73,7 +73,7 @@ krldf --url="https://www.google.com/"
 
   Type: `number`
 
-  Default: `1366`
+  Default: `2560`
 
   ⚙️ Width of the capture viewport
 
@@ -81,7 +81,7 @@ krldf --url="https://www.google.com/"
 
   Type: `number`
 
-  Default: `768`
+  Default: `1440`
 
   ⚙️ Height of the capture viewport
 

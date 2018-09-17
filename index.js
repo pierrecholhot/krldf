@@ -5,8 +5,8 @@ const log = require('pretty-log')
 const defaults = {
   url: 'about:blank',
   delay: 3000,
-  width: 1366,
-  height: 768,
+  width: 2560,
+  height: 1440,
   path: 'result.pdf',
   landscape: false,
   headerTemplate: '',
