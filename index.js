@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer')
 const lag = require('delay')
 const log = require('pretty-log')
 
+// Default configuration
 const defaults = {
   url: 'about:blank',
   delay: 3000,
