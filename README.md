@@ -12,21 +12,19 @@ Saves a webpage as PDF using Chrome's <a href="https://github.com/GoogleChrome/p
 ### node.js
 
     const krldf = require('krldf')
-    const url = 'https://www.google.com/'
-    krldf({ url }, (statusCode, options) => console.log(statusCode, options))
+
+    krldf({ url: 'https://www.google.com/' })
 
 #### with async/await
 
     const krldf = require('krldf')
 
-    async function savePDF() {
-      await krldf({ url: 'https://www.google.com/' }, (code, opts) => {
-        console.log(code, opts.path)
-      })
-      console.log('done');
+    async function capture(opts) {
+      const path = await krldf(opts)
+      if (path) { console.log('done') }
     }
 
-    savePDF()
+    capture({ url: 'https://www.google.com/' })
 
 
 ### command line
