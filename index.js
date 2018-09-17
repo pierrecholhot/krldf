@@ -9,10 +9,22 @@ const defaults = {
   height: 768,
   path: 'result.pdf',
   landscape: false,
+  headerTemplate: '',
+  footerTemplate: '',
 }
 
 async function krldf(options) {
-  const { url, delay, width, height, path, landscape } = { ...defaults, ...options }
+  const {
+    url,
+    delay,
+    width,
+    height,
+    path,
+    landscape,
+    headerTemplate,
+    footerTemplate,
+  } = { ...defaults, ...options }
+
   try {
     log.debug(`🔥 Initializing new capture`)
     const browser = await puppeteer.launch()
@@ -23,7 +35,7 @@ async function krldf(options) {
     log.debug(`⏰ Waiting for ${delay}ms`)
     await lag(delay)
     log.debug(`📸 Capturing PDF`)
-    await page.pdf({ path, landscape, format: 'A4' })
+    await page.pdf({ path, landscape, displayHeaderFooter: true, headerTemplate, footerTemplate, format: 'A4' })
     log.success(`🍺 Got ${path}`)
     await browser.close()
     return path
