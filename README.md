@@ -9,6 +9,10 @@ Saves a webpage as PDF using Chrome's <a href="https://github.com/GoogleChrome/p
 
 ## Usage
 
+### command line
+
+    krldf --url="https://www.google.com/"
+
 ### node.js
 
     const krldf = require('krldf')
@@ -21,15 +25,10 @@ Saves a webpage as PDF using Chrome's <a href="https://github.com/GoogleChrome/p
 
     async function capture(opts) {
       const path = await krldf(opts)
-      if (path) { console.log('done') }
+      console.log(path ? 'success' : 'failure')
     }
 
     capture({ url: 'https://www.google.com/' })
-
-
-### command line
-
-    krldf --url="https://www.google.com/"
 
 
 ## Configuration
