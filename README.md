@@ -7,9 +7,15 @@ Saves a webpage as PDF using Chrome's <a href="https://github.com/GoogleChrome/p
 
     npm install pierrecholhot/krldf
 
-## Usage
+## Usage (node)
 
-    krldf --url="<url>"
+    const krldf = require('krldf')
+    const url = "<url>"
+    krldf({ url }, (statusCode, options) => console.log(statusCode, options))
+
+## Usage (shell)
+
+    ./node_modules/krldf --url="<url>"
 
 
 ## Configuration

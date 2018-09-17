@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Saves a webpage as PDF using Chrome's Puppeteer",
   "main": "index.js",
+  "bin": {
+    "krldf": "./bin/krldf"
+  },
   "author": "Pierre Cholhot <hello@pierre.cx>",
   "license": "MIT",
   "dependencies": {

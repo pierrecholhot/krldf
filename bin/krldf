@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const options = require('minimist')(process.argv.slice(2))
+const capture = require('../lib/capture')
+const defaults = require('../lib/defaults')
+
+console.log(__filename)
+
+capture({ ...defaults, ...options }, code => process.exit(code))
