@@ -1,12 +1,8 @@
 #!/usr/bin/env node
 
-const options = require('minimist')(process.argv.slice(2))
-const capture = require('../lib/capture')
-const defaults = require('../lib/defaults')
-
 async function krldf(opts) {
-  const path = await capture(opts)
+  const path = await require('../lib/capture')(opts)
   if (!path) { process.exit(1) }
 }
 
-krldf({ ...defaults, ...options })
+krldf(require('minimist')(process.argv.slice(2)))
