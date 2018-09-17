@@ -1,3 +1,3 @@
-const krldf = require('./lib/capture')
+const krldf = require('./lib/krldf')
 
 module.exports = krldf

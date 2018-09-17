@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 async function krldf(opts) {
-  const path = await require('../lib/capture')(opts)
+  const path = await require('../lib/krldf')(opts)
   if (!path) { process.exit(1) }
 }
 
