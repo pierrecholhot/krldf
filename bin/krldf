@@ -4,6 +4,9 @@ const options = require('minimist')(process.argv.slice(2))
 const capture = require('../lib/capture')
 const defaults = require('../lib/defaults')
 
-console.log(__filename)
+async function krldf(opts) {
+  const path = await capture(opts)
+  if (!path) { process.exit(1) }
+}
 
-capture({ ...defaults, ...options }, code => process.exit(code))
+krldf({ ...defaults, ...options })
