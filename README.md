@@ -12,6 +12,7 @@ npm install pierrecholhot/krldf
 
 ```javascript
 const krldf = require('krldf')
+
 krldf({ url: 'https://www.google.com/' })
 ```
 
