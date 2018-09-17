@@ -4,47 +4,97 @@ Saves a webpage as PDF using Chrome's <a href="https://github.com/GoogleChrome/p
 
 ## Install
 
-```
+```shell
 npm install pierrecholhot/krldf
 ```
 
 ## Usage
 
-```
+```javascript
 const krldf = require('krldf')
 krldf({ url: 'https://www.google.com/' })
 ```
 
 #### with async/await callback
 
-    const krldf = require('krldf')
+```javascript
+const krldf = require('krldf')
 
-    async function capture(opts) {
-      const path = await krldf(opts)
-      console.log(path ? 'success' : 'failure')
-    }
+async function capture(opts) {
+  const path = await krldf(opts)
+  console.log(path ? 'success' : 'failure')
+}
 
-    capture({ url: 'https://www.google.com/' })
-
-
-## API
-
-option | default | description
--------|---------|------------
-**url** | about:blank | url of the page to be converted
-**width** | 1440 | sets the width of the viewport
-**height** | 1000 | sets the height of the viewport
-**delay** | 3000 | number of ms to wait until capture
-**path** | result.pdf | path and filename of resulting PDF
-**landscape** | null | enable landscape mode
-
+capture({ url: 'https://www.google.com/' })
+```
 
 ## CLI
 
+Default usage with [npx](https://www.npmjs.com/package/npx) :
+
+```shell
+npm install pierrecholhot/krldf
 ```
-npm install -g pierrecholhot/krldf
+```shell
+npx krldf --url="https://www.google.com/"
 ```
 
+Or via global install :
+
+```shell
+npm install -g pierrecholhot/krldf
 ```
+```shell
 krldf --url="https://www.google.com/"
 ```
+
+
+## Options
+
+### url
+
+  Type: `string`
+
+  Default: `about:blank`
+
+  ⚙️ Url of the page to be converted
+
+### width
+
+  Type: `number`
+
+  Default: `1440`
+
+  ⚙️ Sets the width of the viewport
+
+### height
+
+  Type: `number`
+
+  Default: `1000`
+
+  ⚙️ Sets the height of the viewport
+
+### delay
+
+  Type: `number`
+
+  Default: `3000`
+
+  ⚙️ Number of ms to wait until capture
+
+### path
+
+  Type: `string`
+
+  Default: `result.pdf`
+
+  ⚙️ Path and filename of resulting PDF
+
+### landscape
+
+  Type: `boolean`
+
+  Default: `null`
+
+  ⚙️ Enable landscape mode
