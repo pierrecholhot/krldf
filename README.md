@@ -27,3 +27,4 @@ option | default | description
 **height** | 1000 | sets the height of the viewport
 **delay** | 3000 | number of ms to wait until capture
 **path** | result.pdf | path and filename of resulting PDF
+**landscape** | null | add `--landscape` to enable lanscape mode
