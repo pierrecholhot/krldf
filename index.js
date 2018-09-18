@@ -12,6 +12,7 @@ const defaults = {
   landscape: false,
   headerTemplate: '',
   footerTemplate: '',
+  browserArgs: [],
 }
 
 async function krldf(options) {
@@ -24,6 +25,7 @@ async function krldf(options) {
     landscape,
     headerTemplate,
     footerTemplate,
+    browserArgs,
   } = { ...defaults, ...options }
 
   try {
@@ -33,11 +35,11 @@ async function krldf(options) {
       format: 'A4',
       displayHeaderFooter: true,
       headerTemplate,
-      footerTemplate,
+      footerTemplate
     }
 
     log.debug(`🔥 Initializing new capture`)
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({ args: browserArgs })
     const page = await browser.newPage()
     await page.setViewport({ width, height })
 

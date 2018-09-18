@@ -128,3 +128,11 @@ krldf --url="https://www.google.com/"
   - `url` document location
   - `pageNumber` current page number
   - `totalPages` total pages in the document
+
+### browserArgs
+
+  Type: `array`
+
+  Default: `[]`
+
+  ⚙️ Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](https://peter.sh/experiments/chromium-command-line-switches/).
