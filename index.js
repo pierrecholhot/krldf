@@ -1,63 +1,71 @@
 const puppeteer = require('puppeteer')
-const lag = require('delay')
+const delay = require('delay')
 const log = require('pretty-log')
 
 
 const defaults = {
   url: 'about:blank',
-  delay: 3000,
-  width: 2560,
-  height: 1440,
-  path: 'result.pdf',
-  landscape: false,
-  headerTemplate: '',
-  footerTemplate: '',
+  filePath: 'result.pdf',
+  captureDelay: 3000,
+  viewportWidth: 2560,
+  viewportHeight: 1440,
+  paperFormat: 'A4',
+  landscapeMode: false,
+  printHeaderTemplate: '',
+  printFooterTemplate: '',
   browserArgs: [],
 }
 
 async function krldf(options) {
   const {
     url,
-    delay,
-    width,
-    height,
-    path,
-    landscape,
-    headerTemplate,
-    footerTemplate,
+    filePath,
+    captureDelay,
+    viewportWidth,
+    viewportHeight,
+    paperFormat,
+    landscapeMode,
+    printHeaderTemplate,
+    printFooterTemplate,
     browserArgs,
   } = { ...defaults, ...options }
 
   try {
-    const pdfOptions = {
-      path,
-      landscape,
-      format: 'A4',
-      displayHeaderFooter: true,
-      headerTemplate,
-      footerTemplate
-    }
+    const hasHeader = printHeaderTemplate && printHeaderTemplate.length
+    const hasFooter = printFooterTemplate && printFooterTemplate.length
 
     log.debug(`🔥 Initializing new capture`)
     const browser = await puppeteer.launch({ args: browserArgs })
     const page = await browser.newPage()
-    await page.setViewport({ width, height })
+    await page.setViewport({
+      width: viewportWidth,
+      height: viewportHeight,
+    })
 
     log.debug(`🤞 Fetching ${url}`)
-    await page.goto(url, { waitUntil: 'networkidle2' })
+    await page.goto(url, {
+      waitUntil: 'networkidle2'
+    })
 
-    log.debug(`⏰ Waiting for ${delay}ms`)
-    await lag(delay)
+    log.debug(`⏰ Waiting for ${captureDelay}ms`)
+    await delay(captureDelay)
 
     log.debug(`📸 Capturing PDF`)
-    await page.pdf(pdfOptions)
-
-    log.success(`🍺 Got ${path}`)
+    await page.pdf({
+      path: filePath,
+      format: paperFormat,
+      landscape: landscapeMode,
+      headerTemplate: printHeaderTemplate,
+      footerTemplate: printFooterTemplate,
+      displayHeaderFooter: hasHeader || hasFooter,
+    })
     await browser.close()
-    return path
+
+    log.success(`🍺 Got ${filePath}`)
+    return filePath
   } catch (err) {
     log.error(`❌ Failed with ${err}`)
-    return null
+    return Error(err)
   }
 }
 

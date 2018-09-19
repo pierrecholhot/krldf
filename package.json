@@ -1,6 +1,6 @@
 {
   "name": "krldf",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Saves a webpage as PDF using Chrome's Puppeteer",
   "license": "MIT",
   "repository": "pierrecholhot/krldf",
@@ -14,6 +14,9 @@
   },
   "main": "index.js",
   "bin": "cli.js",
+  "scripts": {
+    "test": "./test.sh && node test.js"
+  },
   "dependencies": {
     "delay": "4.0.1",
     "minimist": "1.2.0",

@@ -1,6 +1,7 @@
 # krldf
 
-Saves a webpage as PDF using Chrome's <a href="https://github.com/GoogleChrome/puppeteer"><img src="https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png" height="20" align="top" /> Puppeteer</a>
+Saves a webpage as PDF using Chrome's Puppeteer.
+
 
 ## Install
 
@@ -8,7 +9,10 @@ Saves a webpage as PDF using Chrome's <a href="https://github.com/GoogleChrome/p
 npm install pierrecholhot/krldf
 ```
 
+
 ## Usage
+
+For a more thorough example, see [`test.js`](./test.js) and [`test.sh`](./test.sh).
 
 ```javascript
 const krldf = require('krldf')
@@ -29,10 +33,16 @@ async function capture(opts) {
 capture({ url: 'https://www.google.com/' })
 ```
 
-## CLI
+### CLI
 
 ```shell
 ./node_modules/krldf/cli.js --url="https://www.google.com/"
+```
+
+#### or via [npm global install](https://docs.npmjs.com/getting-started/installing-npm-packages-globally)
+
+```shell
+krldf --url="https://www.google.com/"
 ```
 
 #### or via [npx](https://www.npmjs.com/package/npx)
@@ -41,87 +51,56 @@ capture({ url: 'https://www.google.com/' })
 npx krldf --url="https://www.google.com/"
 ```
 
-#### or via global install
-
-```shell
-npm install -g pierrecholhot/krldf
-```
-```shell
-krldf --url="https://www.google.com/"
-```
-
 
 ## Options
 
 ### url
 
-  Type: `string`
+  **Type** : `string` <br />
+  **Default** : `about:blank` <br />
+  **Description** : URL of the page to be converted. <br />The url should include scheme, e.g. `https://`. <br />
 
-  Default: `about:blank`
+### filePath
 
-  ⚙️ URL of the page to be converted. The url should include scheme, e.g. `https://`
+  **Type** : `string` <br />
+  **Default** : `result.pdf` <br />
+  **Description** : The file path to save the PDF to. <br />If `filePath` is a relative path, then it is resolved relative to current working directory.
 
-### delay
+### captureDelay
 
-  Type: `number`
+  **Type** : `number` <br />
+  **Default** : `3000` <br />
+  **Description** : Number of `ms` to wait before capture. <br />Useful when waiting for authentication services.
 
-  Default: `3000`
+### viewportWidth
 
-  ⚙️ Number of `ms` to wait before capture. Useful when waiting for authentication services
+  **Type** : `number` <br />
+  **Default** : `2560` <br />
+  **Description** : Width of the capture viewport.
 
-### width
+### viewportHeight
 
-  Type: `number`
+  **Type** : `number` <br />
+  **Default** : `1440` <br />
+  **Description** : Height of the capture viewport.
 
-  Default: `2560`
+### paperFormat
 
-  ⚙️ Width of the capture viewport
+  **Type** : `string` <br />
+  **Default** : `A4` <br />
+  **Options** : `Letter`, `Legal`, `Tabloid`, `Ledger`, `A0`, `A1`, `A2`, `A3`, `A4`, `A5`, `A6`
 
-### height
+### landscapeMode
 
-  Type: `number`
+  **Type** : `boolean` <br />
+  **Default** : `false` <br />
+  **Description** : Enable paper landscape orientation.
 
-  Default: `1440`
+### printHeaderTemplate <br />printFooterTemplate
 
-  ⚙️ Height of the capture viewport
-
-### path
-
-  Type: `string`
-
-  Default: `result.pdf`
-
-  ⚙️ The file path to save the PDF to. If path is a relative path, then it is resolved relative to current working directory.
-
-### landscape
-
-  Type: `boolean`
-
-  Default: `false`
-
-  ⚙️ Enable paper landscape orientation
-
-### headerTemplate
-
-  Type: `string`
-
-  Default: ` `
-
-  ⚙️ HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them:
-
-  - `date` formatted print date
-  - `title` document title
-  - `url` document location
-  - `pageNumber` current page number
-  - `totalPages` total pages in the document
-
-### footerTemplate
-
-  Type: `string`
-
-  Default: ` `
-
-  ⚙️ HTML template for the print footer. Should be valid HTML markup with following classes used to inject printing values into them:
+  **Type** : `string` <br />
+  **Default** : *`(empty strings)`* <br />
+  **Description** : HTML templates for the print header and print footer. <br />Should be valid HTML markup with following classes used to inject printing values into them :
 
   - `date` formatted print date
   - `title` document title
@@ -131,8 +110,6 @@ krldf --url="https://www.google.com/"
 
 ### browserArgs
 
-  Type: `array`
-
-  Default: `[]`
-
-  ⚙️ Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](https://peter.sh/experiments/chromium-command-line-switches/).
+  **Type** : `array` <br />
+  **Default** : `[]` <br />
+  **Description** : Additional arguments to pass to the browser instance. <br />The list of Chromium flags can be found [here](https://peter.sh/experiments/chromium-command-line-switches/).

@@ -2,7 +2,7 @@
 
 async function cli(opts) {
   const path = await require('.')(opts)
-  process.exit(path ? 0 : 1)
+  process.exit(path instanceof Error ? 1 : 0)
 }
 
 cli(require('minimist')(process.argv.slice(2)))
