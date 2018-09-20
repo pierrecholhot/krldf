@@ -1,6 +1,8 @@
-const krldf = require('.')
+#!/usr/bin/env node
 
-krldf({
+const krldf = require('..')
+
+const options = {
   url: 'https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4',
   filePath: 'addyosmani-the-cost-of-javascript-2018.pdf',
   captureDelay: 4000,
@@ -21,4 +23,14 @@ krldf({
       <span class="totalPages"></span>
     </div>
   `)
-})
+}
+
+krldf(options)
+  .then((path) => {
+    console.log('success callback')
+    process.exit(0)
+  })
+  .catch((err) => {
+    console.log('error callback')
+    process.exit(1)
+  })

@@ -1,4 +1,6 @@
-./cli.js \
+#!/usr/bin/env bash
+
+../cli.js \
   --url="https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e" \
   --filePath="addyosmani-the-cost-of-javascript-2017.pdf" \
   --captureDelay=4000 \

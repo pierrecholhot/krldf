@@ -12,28 +12,24 @@ npm install pierrecholhot/krldf
 
 ## Usage
 
-For a more thorough example, see [`test.js`](./test.js) and [`test.sh`](./test.sh).
-
 ```javascript
 const krldf = require('krldf')
 
 krldf({ url: 'https://www.google.com/' })
 ```
 
-#### with async/await callback
+#### with promises
 
-```javascript
-const krldf = require('krldf')
+Example in [`examples/node-promises.js`](./examples/node-promises.js)
 
-async function capture(opts) {
-  const path = await krldf(opts)
-  console.log(path ? 'success' : 'failure')
-}
+#### with async/await
 
-capture({ url: 'https://www.google.com/' })
-```
+Example in [`examples/node-async.js`](./examples/node-async.js)
+
 
 ### CLI
+
+Example in [`examples/cli.sh`](./examples/cli.sh)
 
 ```shell
 ./node_modules/krldf/cli.js --url="https://www.google.com/"

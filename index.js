@@ -65,7 +65,7 @@ async function krldf(options) {
     return filePath
   } catch (err) {
     log.error(`❌ Failed with ${err}`)
-    return Error(err)
+    throw err
   }
 }
 

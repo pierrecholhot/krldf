@@ -14,9 +14,6 @@
   },
   "main": "index.js",
   "bin": "cli.js",
-  "scripts": {
-    "test": "./test.sh && node test.js"
-  },
   "dependencies": {
     "delay": "4.0.1",
     "minimist": "1.2.0",
