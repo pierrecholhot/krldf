@@ -6,7 +6,8 @@ const log = require('pretty-log')
 const defaults = {
   url: 'about:blank',
   filePath: 'result.pdf',
-  captureDelay: 3000,
+  captureDelay: 2000,
+  captureWhen: 'networkidle0',
   viewportWidth: 2560,
   viewportHeight: 1440,
   paperFormat: 'A4',
@@ -21,6 +22,7 @@ async function krldf(options) {
     url,
     filePath,
     captureDelay,
+    captureWhen,
     viewportWidth,
     viewportHeight,
     paperFormat,
@@ -44,7 +46,7 @@ async function krldf(options) {
 
     log.debug(`🤞 Fetching ${url}`)
     await page.goto(url, {
-      waitUntil: 'networkidle2'
+      waitUntil: captureWhen
     })
 
     log.debug(`⏰ Waiting for ${captureDelay}ms`)
