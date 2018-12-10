@@ -12,8 +12,8 @@ const defaults = {
   viewportHeight: 1440,
   paperFormat: 'A4',
   landscapeMode: false,
-  printHeaderTemplate: '',
-  printFooterTemplate: '',
+  printHeaderTemplate: '&nbsp;',
+  printFooterTemplate: '&nbsp;',
   browserArgs: [],
 }
 
@@ -60,6 +60,12 @@ async function krldf(options) {
       headerTemplate: printHeaderTemplate,
       footerTemplate: printFooterTemplate,
       displayHeaderFooter: hasHeader || hasFooter,
+      margin: {
+        top: '50px',
+        bottom: '100px',
+        left: '25px',
+        right: '25px',
+      }
     })
     await browser.close()
 
